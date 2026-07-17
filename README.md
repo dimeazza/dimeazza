@@ -6,7 +6,7 @@ Fundador y CEO de **[EKORE](https://ekore.app)**. Construyo el copiloto financie
 
 - 💼 Antes: Client Service Manager (AIFM) en **FundRock LIS** — fondos alternativos y compliance financiero institucional.
 - 🚀 Ahora: fundador solo. EKORE crece 100% AI-native, sin equipo externo.
-- 🌍 Italiano, base en Valencia, España. Español e inglés fluido.
+- 🌍 Italiano, en Valencia, España. Español e inglés fluido.
 - 🧠 Diseño sistemas multiagente con reglas duras de seguridad — ver [`investment-swarm`](https://github.com/dimeazza/investment-swarm) y [`sonnet--elevation`](https://github.com/dimeazza/sonnet--elevation).
 
 ## Proyectos
