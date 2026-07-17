@@ -22,7 +22,14 @@ Sistema multiagente de trading autónomo para Interactive Brokers. Nueve agentes
 `Python` · `Claude` · `Supabase` · `IBKR`
 
 ### 🧬 sonnet--elevation
-Protocolo abierto para acercar un modelo "daily-driver" al nivel frontera comprando profundidad con cómputo de inferencia: verificación adversarial, memoria externa, juicio destilado.
+sonnet-elevation es un protocolo que hace que un modelo barato de uso diario (Sonnet) trabaje lo más cerca posible del nivel de un modelo frontier (Fable 5), gastando más cómputo y disciplina en lugar de más capacidad. Funciona con cuatro palancas:
+
+GEN×3 — ante un problema complejo, genera 3 soluciones con enfoques deliberadamente distintos (ortodoxa, mínima, estructural) antes de evaluar ninguna. Compra profundidad de búsqueda con tokens.
+Verificación adversarial — luego cambia de rol: escribe checks falsables y ataca sus propias soluciones como un revisor hostil, corrigiendo solo lo defectuoso (máx. 3 iteraciones). Explota que verificar es más fácil que generar.
+Memoria externa (STATE.md) — mantiene un archivo con decisiones, invariantes e interfaces para tareas largas o multi-sesión, aproximando la ventana de contexto gigante que no tiene.
+Cartuchos de juicio destilado — la pieza clave: documentos generados por el modelo frontier con sus trampas, árboles de decisión e invariantes sobre TUS sistemas concretos. El modelo menor no tiene que generar ese juicio, solo aplicarlo — que sí está a su alcance.
+
+Resultado medido: ~65–70% de similitud operacional con Fable 5 en dominios cubiertos por cartuchos. En una frase: no hace a Sonnet más inteligente — hace que trabaje como si un senior le hubiera dejado el método, los apuntes del caso y la humildad de saber cuándo llamar.
 
 `ai-agents` · `llm` · `prompt-engineering` · `claude-skills`
 
