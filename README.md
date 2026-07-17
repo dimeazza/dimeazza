@@ -1,60 +1,39 @@
-# sonnet-elevation
+# Hola, soy Andrea 
 
-**Protocolo de elevación para modelos LLM: cómo hacer que un modelo menor opere cerca del nivel de un modelo frontier comprando profundidad con cómputo de inferencia.**
+Fundador y CEO de **[EKORE](https://ekore.app)**. Construyo el copiloto financiero para autónomos y freelancers en España y LATAM.
 
-Autor: [Andrea Di Mare](https://github.com/dimeazza) · 2026
+## Sobre mí
 
----
+- 💼 Antes: Client Service Manager (AIFM) en **FundRock LIS** — fondos alternativos y compliance financiero institucional.
+- 🚀 Ahora: fundador solo. EKORE crece 100% AI-native, sin equipo externo.
+- 🌍 Italiano, base en Valencia, España. Español e inglés fluido.
+- 🧠 Investigo cómo exprimir el rendimiento de LLMs en producción real — ver [`sonnet--elevation`](https://github.com/dimeazza/sonnet--elevation).
 
-## El problema
+## Proyectos
 
-Los modelos frontier (Claude Fable 5 y similares) son caros y de acceso limitado. Los modelos de trabajo diario (Claude Sonnet y similares) son rápidos y baratos, pero pierden en las tareas que más importan: decisiones con trade-offs, arquitectura, análisis de riesgo, verificación de fallos no obvios.
+### 💰 EKORE — [ekore.app](https://ekore.app)
+Fintech SaaS para trabajadores independientes. AIKore analiza ingresos y gastos, calcula impuestos por sector fiscal, y recomienda seguros e inversión. Arena y Rangos gamifican el hábito financiero.
 
-La capacidad bruta no se transfiere por prompt. Pero cuatro cosas sí:
+`React` · `TypeScript` · `Vite` · `Supabase` · `Vercel`
 
-| Palanca | Qué transfiere | Mecanismo |
-|---|---|---|
-| **GEN×3** | Profundidad de búsqueda | Generar 3 soluciones con supuestos divergentes ANTES de evaluar ninguna (best-of-N manual) |
-| **Verificador adversarial** | Detección de defectos | Verificar es más fácil que generar: checks falsables escritos antes de mirar las soluciones |
-| **Memoria externa** | Contexto extendido | Protocolo STATE.md + map-reduce para aproximar ventanas de contexto grandes |
-| **Cartuchos de juicio** | Criterio del modelo frontier | Juicio pre-computado por el modelo grande sobre TUS dominios, que el modelo menor solo tiene que APLICAR |
+### 🧬 sonnet--elevation
+Protocolo abierto para acercar un modelo "daily-driver" al nivel frontera comprando profundidad con cómputo de inferencia: verificación adversarial, memoria externa, juicio destilado.
 
-Y una contramedida obligatoria: **regla de escalado**. El mayor riesgo del protocolo es producir respuestas con la *forma* de un modelo frontier sin su fondo. El skill obliga al modelo a declarar "esto excede mi verificación" ante 6 triggers concretos, en vez de fingir.
+`ai-agents` · `llm` · `prompt-engineering` · `claude-skills`
 
-## Qué hay en este repo
+## Stack
 
-```
-skill/
-  SKILL.md                      # El protocolo completo (formato Claude Skills)
-  references/
-    plantilla-state.md          # Memoria externa para tareas multi-sesión
-    plantilla-cartucho.md       # Estructura de un cartucho de juicio destilado
-    prompt-destilado.md         # El prompt para generar cartuchos con un modelo frontier
-```
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white)
+![Claude](https://img.shields.io/badge/Claude-CC785C?style=flat&logo=anthropic&logoColor=white)
 
-Los cartuchos son personales por diseño: contienen el juicio del modelo grande sobre tus sistemas concretos. Este repo incluye la plantilla y el prompt generador; tus cartuchos los generas tú y viven en tu máquina.
+## GitHub Stats
 
-## Instalación (Claude)
+![Andrea's GitHub stats](https://github-readme-stats.vercel.app/api?username=dimeazza&show_icons=true&theme=dark&hide_border=true&title_color=5effa8&icon_color=5effa8&text_color=ffffff&bg_color=0d1117)
 
-**Claude Code:**
-```bash
-git clone https://github.com/dimeazza/sonnet-elevation.git
-cp -r sonnet-elevation/skill ~/.claude/skills/sonnet-elevacion
-```
+## Contacto
 
-**Claude.ai:** empaqueta la carpeta `skill/` como ZIP con extensión `.skill` y súbela en Ajustes → Capacidades → Skills.
-
-## Uso
-
-1. Genera tus cartuchos: abre una sesión con el modelo frontier, usa `references/prompt-destilado.md` con el contexto real de tu dominio, guarda el resultado en `references/cartucho-<dominio>.md`.
-2. Trabaja normalmente con el modelo menor. El protocolo se activa en tareas complejas o escribiendo **"ELEVA"**.
-3. Cuando el modelo declare `⚠️ ESCALADO RECOMENDADO`, esa pregunta va al modelo frontier — es la señal de que el protocolo llegó a su techo honestamente.
-4. Regenera los cartuchos tras cada hito mayor o ~3 meses: el juicio destilado caduca.
-
-## Resultados esperados (honestos)
-
-Medido en mi propio flujo de trabajo: ~65–70% de similitud operacional con el modelo frontier en tareas cubiertas por cartuchos, ~55–65% en ejecución verificable sin cartucho, y ~20–30% en insight novedoso cross-domain — que es exactamente donde el protocolo escala en vez de fingir. No es magia: es disciplina de proceso + juicio pre-computado + honestidad sobre los límites.
-
-## Licencia
-
-MIT — ver [LICENSE](LICENSE).
+📧 hola@ekore.app · 🌐 [ekore.app](https://ekore.app)
